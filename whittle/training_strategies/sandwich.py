@@ -33,6 +33,10 @@ class SandwichStrategy(BaseTrainingStrategy):
     def __call__(self, model, inputs, outputs, scale_loss=1, **kwargs):
         total_loss = 0
         # update super-network
+        # Supondo que o objeto seja chamado 'obj'
+        print("Classe do objeto:", type(model).__name__)  # Imprime o nome da classe do objeto
+        print("Métodos disponíveis:")
+        print([method for method in dir(model) if callable(getattr(model, method))])
         model.reset_super_network()
         loss = self.compute_loss(model, inputs, outputs)
         loss *= scale_loss
@@ -41,8 +45,10 @@ class SandwichStrategy(BaseTrainingStrategy):
         # update random sub-networks
         for i in range(self.random_samples):
             config = self.sampler.sample()
-            method = getattr(model, 'set_sub_network')
-            print(method)
+            # Supondo que o objeto seja chamado 'obj'
+            print("Classe do objeto:", type(model).__name__)  # Imprime o nome da classe do objeto
+            print("Métodos disponíveis:")
+            print([method for method in dir(model) if callable(getattr(model, method))])
             model.set_sub_network(**config)
             loss = self.compute_loss(model, inputs, outputs)
 
@@ -53,8 +59,10 @@ class SandwichStrategy(BaseTrainingStrategy):
 
         # smallest network
         config = self.sampler.get_smallest_sub_network()
-        method = getattr(model, 'set_sub_network')
-        print(method)
+        # Supondo que o objeto seja chamado 'obj'
+        print("Classe do objeto:", type(model).__name__)  # Imprime o nome da classe do objeto
+        print("Métodos disponíveis:")
+        print([method for method in dir(model) if callable(getattr(model, method))])
         model.set_sub_network(**config)
         loss = self.compute_loss(model, inputs, outputs)
         loss *= scale_loss
