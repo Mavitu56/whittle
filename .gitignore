@@ -2,6 +2,7 @@
 **/examples/**/*.png
 **/checkpoints
 **/data
+**/.sec
 
 *.DS_Store
 
