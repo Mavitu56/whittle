@@ -111,7 +111,7 @@ class SandwichStrategy(BaseTrainingStrategy):
         
         # Resetar para supernetwork para consistência
         model.reset_super_network()
-        return total_loss
+        return loss,total_loss
 
     def _call_original(self, model, inputs, outputs, scale_loss=1, **kwargs):
         """
