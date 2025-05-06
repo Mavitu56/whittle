@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import torch
 from typing import Any
 
 from whittle.training_strategies.base_strategy import BaseTrainingStrategy
