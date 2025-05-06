@@ -56,6 +56,7 @@ class BaseTrainingStrategy:
             loss = self.chunked_loss(model, inputs, outputs)
         else:
             y_hat = model(**inputs)
+            
             loss = self.loss_function(y_hat, outputs)
         return loss
 
